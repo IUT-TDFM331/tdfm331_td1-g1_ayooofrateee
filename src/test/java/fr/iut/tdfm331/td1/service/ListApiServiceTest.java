@@ -70,6 +70,28 @@ public class ListApiServiceTest {
         Assert.assertTrue(service.getListMeetings().contains(newMeeting));
     }
 
+    @Test
+    public void removeNewMeetingWithSuccess(){
+
+        // Create list Employee
+        List<Employee> listEmployees = Arrays.asList(new Employee("Baptiste", "baptiste@lamzone.com", 4),
+                new Employee("Fanny", "fanny@lamzone.com", 10),
+                new Employee("Vincent", "vincent@lamzone.com", 22));
+
+        // Create list Meeting
+        Meeting newMeeting = new Meeting("Réunion d'avancement",
+                "Planck",
+                "12/11/20",
+                "15:30",
+                "16:00",
+                "Revues des dernières actions",
+                listEmployees);
+
+        //Remove Meting
+        service.removeMeeting(newMeeting);
+        Assert.assertFalse(service.getListMeetings().contains(newMeeting));
+    }
+
     /**
      * Test to check if a selected Meeting is correctly removed from list
      */
